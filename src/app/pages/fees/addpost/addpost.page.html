@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon
+      style="font-size: 32px; text-align: end; margin-right: 10px"
+      name="close-sharp"
+      (click)="cancel()"
+      slot="end"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 18px">
+    <h4 style="margin-bottom: 14px">
+      Hey {{username | titlecase}}, <br />
+      What are you thinging right now?
+    </h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Write something</mat-label>
+      <textarea [(ngModel)]="content" matInput></textarea>
+    </mat-form-field>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div style="padding: 18px">
+      <button
+        (click)="addpost()"
+        style="width: 100%; padding: 9px"
+        mat-raised-button
+        color="primary"
+      >
+        Post
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

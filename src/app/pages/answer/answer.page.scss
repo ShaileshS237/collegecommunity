@@ -1,0 +1,31 @@
+.ask-question {
+  padding: 0;
+  .question-input {
+    background: linear-gradient(296deg, #673ab7, #290a61);
+    width: 100%;
+    border-radius: 15px;
+    padding-bottom: 22px;
+  }
+}
+
+.input {
+  margin-top: 38px;
+  width: 100%;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 21px;
+  text-align: center;
+  padding: 8px 44px;
+  height: 104px;
+  text-transform: capitalize;
+  height: 67%;
+}
+
+.input:hover {
+  outline: none;
+}
+
+.outerdiv {
+  padding: 0 21px 21px;
+}

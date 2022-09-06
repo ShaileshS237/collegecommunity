@@ -1,0 +1,205 @@
+<ion-header class="ion-no-border" style="background: white">
+  <ion-toolbar style="--background: white">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div *ngIf="type==2">
+    <div
+      style="
+        padding: 0 20px;
+        text-align: start;
+        margin-bottom: 15px;
+        background: white;
+      "
+      *ngFor="let item of questiondeatils"
+    >
+      <div
+        class="question"
+        style="
+          background: #791756;
+          color: white;
+          padding: 23px;
+          border-radius: 10px 10px 0 0;
+        "
+      >
+        <div>
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="12">
+                <h6 style="font-size: 12px; margin: 0 0 12px; color: #ffffff87">
+                  {{item.date | date}}
+                </h6>
+              </ion-col>
+              <!-- <ion-col
+                size="2"
+                style="display: flex; justify-content: flex-end"
+              >
+                <ion-icon
+                  [matMenuTriggerFor]="menu"
+                  name="ellipsis-vertical"
+                ></ion-icon>
+                <mat-menu #menu="matMenu">
+                  <button (click)="deletePost(1)" mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete Post</span>
+                  </button>
+                </mat-menu>
+              </ion-col> -->
+            </ion-row>
+          </ion-grid>
+        </div>
+        <h5>{{item.question}}</h5>
+      </div>
+      <div
+        class="question"
+        style="
+          background: #4a0e34;
+          color: white;
+          padding: 16px 23px;
+          border-radius: 0 0 10px 10px;
+        "
+      >
+        <h6 style="font-size: 13px; margin: 0">
+          Asked By : <br />
+          {{item.name | titlecase}} | {{ item.programme}} ({{item.branch}})
+        </h6>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type==1">
+    <div
+      style="
+        padding: 0 20px;
+        text-align: start;
+        margin-bottom: 15px;
+        background: white;
+      "
+      *ngFor="let item of questiondeatils"
+    >
+      <div
+        class="question"
+        style="
+          background: #1f4e95;
+          color: white;
+          padding: 23px;
+          border-radius: 10px 10px 0 0;
+        "
+      >
+        <div>
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="12">
+                <h6 style="font-size: 12px; margin: 0 0 12px; color: #ffffff87">
+                  {{item.date | date}}
+                </h6>
+              </ion-col>
+              <!-- <ion-col
+                size="2"
+                style="display: flex; justify-content: flex-end"
+              >
+                <ion-icon
+                  [matMenuTriggerFor]="menu"
+                  name="ellipsis-vertical"
+                ></ion-icon>
+                <mat-menu #menu="matMenu">
+                  <button (click)="deletePost(1)" mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete Post</span>
+                  </button>
+                </mat-menu>
+              </ion-col> -->
+            </ion-row>
+          </ion-grid>
+        </div>
+        <h5>{{item.question}}</h5>
+      </div>
+      <div
+        class="question"
+        style="
+          background: #082550;
+          color: white;
+          padding: 16px 23px;
+          border-radius: 0 0 10px 10px;
+        "
+      >
+        <h6 style="font-size: 13px; margin: 0">Asked By : You</h6>
+      </div>
+    </div>
+  </div>
+  <h1 style="font-size: 19px; margin: 39px 26px 7px">Answers📝</h1>
+</ion-header>
+
+<ion-content style="--background: white">
+  <div
+    style="text-align: center; margin-top: 66px; color: #d2d2d2"
+    *ngIf="showMsg"
+  >
+    No answer found.
+  </div>
+
+  <div
+    class="answers"
+    style="padding: 6px 20px 12px; border-radius: 10px"
+    *ngFor="let item of qanswer"
+  >
+    <ion-grid style="padding: 11px; background: #4a0e34; border-radius: 10px">
+      <ion-row>
+        <ion-col size="12" style="padding: 0 9px">
+          <h5
+            style="
+              font-size: 15px;
+              margin-bottom: 2px;
+              color: white;
+              font-weight: 700;
+            "
+          >
+            {{item.answer}}
+          </h5>
+          <h5
+            style="
+              font-size: 12px;
+              margin-top: 8px;
+              color: #ffffff7a;
+              font-weight: 400;
+            "
+          >
+            {{item.name | titlecase}} | {{item.programme}} ({{item.branch}})
+            <br />
+            on {{item.date | date}}
+          </h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="type == 2">
+  <ion-toolbar>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="8">
+          <mat-form-field
+            style="font-size: 14px"
+            class="example-full-width"
+            appearance="fill"
+          >
+            <mat-label>Add your answers</mat-label>
+            <input matInput [(ngModel)]="answer" />
+          </mat-form-field>
+        </ion-col>
+        <ion-col size="4">
+          <button
+            mat-flat-button
+            color="primary"
+            style="height: 100%; width: 100%"
+            (click)="answerQue() "
+            [disabled]="!answer"
+          >
+            Answer
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

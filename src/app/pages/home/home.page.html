@@ -1,0 +1,39 @@
+<ion-content>
+  <div
+    style="
+      background: linear-gradient(296deg, #673ab7, #290a61);
+      height: 253px;
+      overflow: hidden;
+    "
+  >
+    <div style="padding: 20px 20px 0px 20px">
+      <div class="greeting">
+        <h1 style="color: white; font-weight: 200">
+          Welcome Back👋,
+          <br />
+        </h1>
+        <h1 style="color: white; font-size: 43px">Shailesh</h1>
+      </div>
+    </div>
+    <img style="width: 106%" src="assets/group_1.png" alt="" />
+  </div>
+
+  <div style="margin-top: 25px">
+    <div style="padding: 0 20px 20px">
+      <h3>Buy & Sell Stuff</h3>
+      <h5 style="font-size: 13px">Featured Category</h5>
+    </div>
+    <ion-slides [options]="md" style="margin-top: 11px">
+      <ion-slide *ngFor="let item of categoryData" size="3">
+        <div
+          [routerLink]="['/categoryadds', item.id]"
+          routerLinkActive="router-link-active"
+          class="center"
+        >
+          <img [src]="'assets/cat_icon/' + item.image" alt="" srcset="" />
+          <span style="font-size: 14px"> {{item.category}}</span>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

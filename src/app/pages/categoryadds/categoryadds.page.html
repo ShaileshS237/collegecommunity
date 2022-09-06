@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>categoryadds</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="posts mt-20" style="padding: 20px">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col
+          style="padding: 0 5px"
+          size="12"
+          *ngFor="let item of popularads"
+        >
+          <div class="singlepost" style="margin-bottom: 15px">
+            <div class="image">
+              <img
+                src="https://www.nova-direct.com/wp-content/uploads/2019/01/home-appliance-nova-direct-old.png"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <!-- <
+              div class="top-left">Cycle</> -->
+            <!-- <h4 class="mt-10">{{item.date | date}}</h4> -->
+            <div class="body">
+              <h2 class="mt-5" style="font-size: 16px; font-weight: 700">
+                {{item.title | titlecase}}
+              </h2>
+
+              <h3 style="font-size: 16px; font-weight: 300; margin: 7px 0px">
+                {{item.content}}
+              </h3>
+              <ion-grid class="ion-no-padding">
+                <ion-row style="margin-top: 16px">
+                  <ion-col size="6">
+                    <ion-chip color="danger"
+                      >Price : Rs. {{item.amount}}</ion-chip
+                    >
+                  </ion-col>
+                  <ion-col
+                    size="6"
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: flex-end;
+                    "
+                  >
+                    <button mat-flat-button color="primary">
+                      Ask Contact No.
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+            <!-- <h1 class="mt-5">₹{{item.amount}}</h1> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

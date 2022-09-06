@@ -1,0 +1,190 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #673ab7; color: white">
+    <ion-title>Feeds</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content style="--background: #f7f7f7">
+  <!-- <div style="background: #673ab7">
+    <div>
+      <h6 style="margin: 0; color: white">
+        <ion-icon name="pin-outline"></ion-icon> NIT,Kurukshtra
+      </h6>
+    </div>
+    <div>
+      <ion-icon name="notifications-outline"></ion-icon>
+    </div>
+  </div> -->
+
+  <div
+    style="
+      height: 242px;
+      background: linear-gradient(180deg, #673ab7, transparent);
+      position: absolute;
+    "
+  >
+    <h1
+      style="
+        font-size: 24px;
+        color: white;
+        margin-top: 23px;
+        margin-bottom: 23px;
+
+        text-align: center;
+        font-weight: 300;
+      "
+    >
+      Get Notified With Each <br />
+
+      <span style="font-weight: 700">Notification</span> <br />
+      Happaning @ NIT KKR
+    </h1>
+
+    <ion-grid style="background: white; margin: 0 15px; border-radius: 8px">
+      <ion-row>
+        <ion-col size="1.5">
+          <img
+            style="border-radius: 39px"
+            src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
+          />
+        </ion-col>
+        <ion-col style="padding-right: 16px" size="10">
+          <input
+            id="post"
+            type="text"
+            placeholder="Write Something.."
+            (click)="openModal()"
+          />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="posts" *ngFor="let item of post">
+      <ion-grid style="padding: 0">
+        <ion-row>
+          <ion-col size="3" style="padding: 0">
+            <div style="height: 100%">
+              <img
+                style="
+                  height: 100%;
+                  object-fit: cover;
+                  border-radius: 12px 0 12px 0;
+                "
+                src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
+              />
+            </div>
+          </ion-col>
+          <ion-col
+            size="8"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding-left: 17px;
+            "
+          >
+            <h4 style="font-weight: 700; margin-bottom: 6px">
+              {{item.name | titlecase}}
+            </h4>
+            <h5 style="font-weight: 100; font-size: 13px">
+              {{item.programme}} | {{item.branch}}
+            </h5>
+          </ion-col>
+          <ion-col size="1" style="display: flex; align-items: center">
+            <ion-icon name="ellipsis-vertical"></ion-icon>
+          </ion-col>
+          <!-- <ion-col>
+            <p style="padding: 0 15px; font-weight: 600; font-size: 19px">
+              Hey Gus Welcome !
+            </p>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col>
+            <h1
+              style="
+                padding: 9px 10px 0;
+                font-weight: 600;
+                font-size: 16px;
+                color: #a5a5a5;
+              "
+            >
+              {{item.date | date}}
+            </h1>
+            <h1 style="padding: 9px 10px; font-weight: 600; font-size: 11px">
+              {{item.content}}
+            </h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8" style="display: flex; justify-content: flex-start">
+            <ion-chip color="tertiary">{{item.likes}} Likes</ion-chip>
+            <ion-chip color="danger">{{item.comments}} Comments</ion-chip>
+          </ion-col>
+
+          <ion-col size="4" style="display: flex; justify-content: flex-end">
+            <!-- <button mat-stroked-button color="primary" style="margin-right: 10px">
+              Comment <ion-icon name="chatbox"></ion-icon>
+            </button> -->
+
+            <button
+              mat-flat-button
+              color="warn"
+              style="width: 88%"
+              (click)="like(item.id,item.likes)"
+              [disabled]="disable"
+            >
+              <ion-spinner
+                name="crescent"
+                style="width: 18px"
+                *ngIf="disable"
+              ></ion-spinner>
+
+              <span *ngIf="!disable">
+                Like <ion-icon name="heart"></ion-icon>
+              </span>
+            </button>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col size="12">
+           
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
+      <mat-divider></mat-divider>
+      <ion-grid style="padding: 0">
+        <ion-row>
+          <ion-col size="2" style="padding: 0">
+            <div style="height: 100%">
+              <img
+                style="height: 100%; object-fit: cover; border-radius: 0"
+                src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
+              />
+            </div>
+          </ion-col>
+          <ion-col
+            size="8"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding-left: 17px;
+            "
+          >
+            <h4 style="font-size: 14px; font-weight: 100; margin-bottom: 2px">
+              Add Comment..
+            </h4>
+          </ion-col>
+
+          <!-- <ion-col>
+            <p style="padding: 0 15px; font-weight: 600; font-size: 19px">
+              Hey Gus Welcome !
+            </p>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

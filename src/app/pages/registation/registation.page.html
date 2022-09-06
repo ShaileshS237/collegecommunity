@@ -1,0 +1,113 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #673ab7">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <button
+      style="margin-right: 14px"
+      slot="end"
+      mat-flat-button
+      color="accent"
+    >
+      Already Registered? Login
+    </button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content style="--background: #673ab7">
+  <div>
+    <div style="padding: 25px 33px 0">
+      <img src="assets/image1.png" alt="" />
+    </div>
+    <div class="form">
+      <h1 class="">Create a new account</h1>
+      <h6
+        class="mb-20"
+        style="margin-top: 5px; font-weight: 400; font-size: 13px"
+      >
+        Let's make NITKKR student community stronger
+      </h6>
+      <h3></h3>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Your Name</mat-label>
+        <input style="text-transform: capitalize" [(ngModel)]="name" matInput />
+      </mat-form-field>
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="6.9">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Your NITKKR email ID</mat-label>
+              <input [(ngModel)]="email" matInput />
+            </mat-form-field>
+          </ion-col>
+          <ion-col size="0.2"> </ion-col>
+          <ion-col size="4.9">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>@nitkkr.ac.in</mat-label>
+              <input disabled placeholder="@nitkkr.ac.in" matInput />
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Your Mobile No.</mat-label>
+        <input type="number" [(ngModel)]="mobile" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose current program</mat-label>
+
+        <mat-select [(ngModel)]="program">
+          <mat-option (click)="getBranch()" value="B.Tech">B.Tech</mat-option>
+          <mat-option (click)="getBranch()" value="M.Tech">M.Tech</mat-option>
+          <mat-option (click)="getBranch()" value="Ph.D">Ph.D</mat-option>
+          <mat-option (click)="getBranch()" value="MBA">MBA</mat-option>
+          <mat-option (click)="getBranch()" value="MCA">MCA</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a branch</mat-label>
+
+        <mat-select [(ngModel)]="branch">
+          <ng-container *ngFor="let item of branchs">
+            <mat-option [value]="item.branch">{{item.branch}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Genrate Password</mat-label>
+        <input
+          [(ngModel)]="password"
+          [type]="hide ? 'password' : 'text'"
+          matInput
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <h4 style="color: #673ab7; font-size: 11px; margin-bottom: 13px">
+        By clicking Register button, I hereby agree and consent to the User
+        Agreement, its policies, and the Privacy Policy.
+      </h4>
+      <button
+        [disabled]="!name || !email || !mobile || !program || !branch || !password"
+        (click)="register()"
+        mat-flat-button
+        color="primary"
+      >
+        Register
+      </button>
+      <!-- <span>
+        Creating an account means you agree to all terms and condition of services
+      </span> -->
+    </div>
+  </div>
+</ion-content>

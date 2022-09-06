@@ -1,0 +1,104 @@
+<ion-content style="padding: 20px">
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="openModal()"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="background">
+    <div class="header">
+      <h1 class="mb-5">
+        <!-- NIT KKR  -->
+        <span class="market">Market</span>
+      </h1>
+      <h5>Buy & Sell Stuffs</h5>
+    </div>
+    <ion-searchbar
+      style="
+        padding: 0;
+        margin: 12px 0;
+        box-shadow: none !important;
+        border-radius: 6px;
+      "
+    ></ion-searchbar>
+  </div>
+  <div class="content mt-20 mb-10"><h3>What are you looking for?</h3></div>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let item of categoryData" size="3">
+          <div
+            [routerLink]="['/categoryadds', item.id]"
+            routerLinkActive="router-link-active"
+            class="center"
+          >
+            <img [src]="'assets/cat_icon/' + item.image" alt="" srcset="" />
+            {{item.category}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="content mt-20 mb-10">
+    <h3>Recently Added For You!</h3>
+    <div class="posts mt-20">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col
+            style="padding: 0 5px"
+            size="12"
+            *ngFor="let item of popularads"
+          >
+            <div class="singlepost" style="margin-bottom: 15px">
+              <div class="image">
+                <img
+                  src="https://www.nova-direct.com/wp-content/uploads/2019/01/home-appliance-nova-direct-old.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <!-- <
+                div class="top-left">Cycle</> -->
+              <!-- <h4 class="mt-10">{{item.date | date}}</h4> -->
+              <div class="body">
+                <h2 class="mt-5" style="font-size: 16px; font-weight: 700">
+                  {{item.title | titlecase}}
+                </h2>
+
+                <!-- <h3 style="font-size: 16px; font-weight: 300; margin: 7px 0px">
+                  ₹{{item.amount}}
+                </h3> -->
+                <ion-grid class="ion-no-padding">
+                  <ion-row style="margin-top: 16px">
+                    <ion-col size="6">
+                      <ion-chip color="danger"
+                        >Price : Rs. {{item.amount}}</ion-chip
+                      >
+                    </ion-col>
+                    <ion-col
+                      size="6"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                      "
+                    >
+                      <button mat-flat-button color="primary">
+                        Make a Deal
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+              <!-- <h1 class="mt-5">₹{{item.amount}}</h1> -->
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

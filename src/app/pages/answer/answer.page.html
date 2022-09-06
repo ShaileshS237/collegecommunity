@@ -1,0 +1,253 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>answer</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div style="padding: 24px 20px 0; text-align: center">
+    <h3 style="font-size: 15px; font-weight: 200">Need Help?</h3>
+    <h3 style="font-weight: 700; color: #673ab7">Just Ask IT</h3>
+  </div>
+  <div class="outerdiv" style="margin-top: 20px">
+    <div class="ask-question">
+      <div class="question-input">
+        <textarea
+          style=""
+          contenteditable="true"
+          placeholder="Ask Your Question Here"
+          class="input"
+          type="text"
+          [(ngModel)]="question"
+        ></textarea>
+
+        <div style="padding: 0 84px; margin-top: 15px">
+          <button
+            style="
+              height: 49px;
+              border-radius: 9px;
+              text-align: center;
+              width: 100%;
+            "
+            mat-flat-button
+            (click)="askquestion()"
+            [disabled]="!question"
+          >
+            <ion-spinner name="crescent" *ngIf="hideask"></ion-spinner>
+            <span *ngIf="!hideask">Ask</span>
+          </button>
+        </div>
+        <h3
+          style="
+            padding: 0 22px;
+            font-size: 15px;
+            color: #ffffffab;
+            text-align: center;
+            margin-top: 15px;
+          "
+        >
+          Don't ask silly question 😉
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="10">
+        <h3 style="padding: 0 22px; font-size: 15px">
+          Recent Questions posted by other 🔥
+        </h3>
+      </ion-col>
+      <ion-col size="4">
+        <!-- <h3 style="padding: 0 22px; font-weight: 100">View All</h3> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <div
+    style="
+      font-size: 13px;
+      text-align: center;
+      margin-top: 36px;
+      color: #00000047;
+    "
+    *ngIf="questionResult.length == 0"
+  >
+    {{questionResult.length}} You Did'nt post any question, Go Ahead
+  </div> -->
+
+  <ion-slides [options]="md">
+    <ion-slide *ngFor="let item of questionResult">
+      <div style="padding: 0 25px; text-align: start">
+        <div
+          class="question"
+          style="
+            background: #791756;
+            color: white;
+            padding: 23px;
+            border-radius: 10px 10px 0 0;
+          "
+        >
+          <div>
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="12">
+                  <h6
+                    style="font-size: 12px; margin: 0 0 12px; color: #ffffff87"
+                  >
+                    {{item.date | date}}
+                  </h6>
+                </ion-col>
+                <!-- <ion-col
+                  size="2"
+                  style="display: flex; justify-content: flex-end"
+                >
+                  <ion-icon name="ellipsis-vertical"></ion-icon>
+                </ion-col> -->
+              </ion-row>
+            </ion-grid>
+          </div>
+          <h5>{{item.question | titlecase}}</h5>
+
+          <button
+            style="margin-top: 13px"
+            mat-flat-button
+            [routerLink]="['/answer/ans-det', item.id,'2']"
+            routerLinkActive="router-link-active"
+          >
+            Answer The Question <mat-icon>arrow_forward</mat-icon>
+          </button>
+          <!-- <input
+            style="
+              width: 100%;
+              margin-top: 13px;
+              padding: 9px;
+              outline: none;
+              border: none;
+              border-radius: 4px;
+              color: black;
+            "
+            placeholder="Answer the question"
+            type="text"
+          /> -->
+        </div>
+        <div
+          class="question"
+          style="
+            background: #4a0e34;
+            color: white;
+            padding: 16px 23px;
+            border-radius: 0 0 10px 10px;
+          "
+        >
+          <h6 style="font-size: 13px; margin: 0">Asked by : Shailesh Sawale</h6>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid style="margin-top: 22px">
+    <ion-row>
+      <ion-col size="10">
+        <h3 style="padding: 0 22px; font-size: 15px">Question you Asked🔥</h3>
+      </ion-col>
+      <ion-col size="4">
+        <!-- <h3 style="padding: 0 22px; font-weight: 100">View All</h3> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- 
+  <div
+    style="
+      font-size: 13px;
+      text-align: center;
+      margin-top: 36px;
+      color: #00000047;
+    "
+    *ngIf="yourquestionResult.length == 0"
+  >
+    You Did'nt post any question, Go Ahead
+  </div> -->
+
+  <div
+    style="padding: 0 25px; text-align: start; margin-bottom: 15px"
+    *ngFor="let item of yourquestionResult"
+  >
+    <div
+      class="question"
+      style="
+        background: #1f4e95;
+        color: white;
+        padding: 23px;
+        border-radius: 10px 10px 0 0;
+      "
+    >
+      <div>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="10">
+              <h6 style="font-size: 12px; margin: 0 0 12px; color: #ffffff87">
+                {{item.date | date}}
+              </h6>
+            </ion-col>
+            <ion-col size="2" style="display: flex; justify-content: flex-end">
+              <ion-icon
+                [matMenuTriggerFor]="menu"
+                name="ellipsis-vertical"
+              ></ion-icon>
+              <mat-menu #menu="matMenu">
+                <button (click)="deletePost(item.id)" mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete Post</span>
+                </button>
+                <!-- <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button> -->
+              </mat-menu>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <h5>{{item.question}}</h5>
+
+      <button
+        style="margin-top: 13px"
+        mat-flat-button
+        [routerLink]="['/answer/ans-det', item.id ,'1']"
+        routerLinkActive="router-link-active"
+      >
+        View answers <mat-icon>arrow_forward</mat-icon>
+      </button>
+      <!-- <input
+            style="
+              width: 100%;
+              margin-top: 13px;
+              padding: 9px;
+              outline: none;
+              border: none;
+              border-radius: 4px;
+              color: black;
+            "
+            placeholder="Answer the question"
+            type="text"
+          /> -->
+    </div>
+    <div
+      class="question"
+      style="
+        background: #082550;
+        color: white;
+        padding: 16px 23px;
+        border-radius: 0 0 10px 10px;
+      "
+    >
+      <h6 style="font-size: 13px; margin: 0">Asked By : You</h6>
+    </div>
+  </div>
+</ion-content>

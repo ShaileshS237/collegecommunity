@@ -1,0 +1,111 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <ion-button (click)="onClick()" fill="none" slot="end">
+      <ion-icon name="settings"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-title>Profile</ion-title>
+  <div style="text-align: center">
+    <div class="image">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+        alt=""
+      />
+    </div>
+    <h1><b>Shailesh Sawale</b></h1>
+    <h4 style="font-weight: 100">M.Tech | Computer Science</h4>
+  </div>
+
+  <div style="padding: 9px">
+    <ion-list lines="none">
+      <ion-item
+        [routerLink]="['/setting/resetpass']"
+        routerLinkActive="router-link-active"
+      >
+        <h5>Change Password</h5>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Privacy Settings</h5>
+        <ion-icon
+          [routerLink]="['/setting/privacysettint']"
+          routerLinkActive="router-link-active"
+          name="arrow-forward-outline"
+          slot="end"
+        ></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="none">
+      <!-- <ion-item [routerLink]="['/setting/appsetting']" routerLinkActive="router-link-active" >
+      <h5>App Settings</h5>
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+     </ion-item> -->
+      <ion-item
+        [routerLink]="['/setting/account']"
+        routerLinkActive="router-link-active"
+      >
+        <h5>Account Settings</h5>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Rate Our App</h5>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="none">
+      <ion-item
+        [routerLink]="['/setting/faq']"
+        routerLinkActive="router-link-active"
+      >
+        <h5>Frequently Ask Questions</h5>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Contact Us</h5>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="none">
+      <ion-item>
+        <h5>Terms and Conditions</h5>
+        <ion-icon
+          name="arrow-forward-outline"
+          slot="end"
+          [routerLink]="['/setting/tnc']"
+          routerLinkActive="router-link-active"
+        ></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Privacy Policy</h5>
+        <ion-icon
+          name="arrow-forward-outline"
+          slot="end"
+          [routerLink]="['/setting/privacypolicy']"
+          routerLinkActive="router-link-active"
+        ></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Cookie Policy</h5>
+        <ion-icon
+          name="arrow-forward-outline"
+          slot="end"
+          [routerLink]="['/setting/cookiepolicy']"
+          routerLinkActive="router-link-active"
+        ></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h5>Legal</h5>
+        <ion-icon
+          name="arrow-forward-outline"
+          slot="end"
+          [routerLink]="['/setting/legal']"
+          routerLinkActive="router-link-active"
+        ></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon
+      style="font-size: 32px; text-align: end; margin-right: 10px"
+      name="close-sharp"
+      (click)="cancel()"
+      slot="end"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 20px">
+    <mat-form-field
+      class="example-full-width"
+      appearance="outline"
+      name="title"
+      ngDefaultControl
+      [(ngModel)]="title"
+    >
+      <mat-label>Product title</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <mat-form-field
+      class="example-full-width"
+      appearance="outline"
+      name="discription"
+      ngDefaultControl
+      [(ngModel)]="discription"
+    >
+      <mat-label>Ad. Discription</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+    <mat-form-field
+      class="example-full-width"
+      appearance="outline"
+      name="price"
+      ngDefaultControl
+      [(ngModel)]="price"
+    >
+      <mat-label>Desire Price(₹)</mat-label>
+      <input matInput type="number" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Select Category</mat-label>
+      <mat-select [(ngModel)]="category">
+        <mat-option *ngFor="let item of categoryData" [value]="item.id">
+          {{item.category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div style="padding: 18px">
+      <button
+        (click)="addpost()"
+        style="width: 100%; padding: 9px"
+        mat-raised-button
+        color="primary"
+      >
+        Post Ad
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
