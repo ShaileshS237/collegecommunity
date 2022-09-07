@@ -1,9 +1,42 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>mainlogin</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<ion-content style="--background: #673ab7">
+  <img src="assets/background3.png" alt="" srcset="" />
+  <div style="color: white; padding: 5%">
+    <h1>Welcome To</h1>
+    <h1><b>NIT KKR Community App</b></h1>
 
+    <p>
+      Get notify with every detail happeing in the campus, <br />
+      Buy or Sell stuff with your folks with the campus and Many More..
+    </p>
+  </div>
+  <div style="padding: 5%">
+    <button
+      mat-flat-button
+      style="width: 100%; height: 52px"
+      [routerLink]="['/registation']"
+      routerLinkActive="router-link-active"
+    >
+      Join Now
+    </button>
+    <h5
+      style="
+        color: white;
+        text-align: center;
+        margin-top: 12px;
+        font-size: 14px;
+      "
+    >
+      Already a Member?
+      <span [routerLink]="['/login']" routerLinkActive="router-link-active"
+        >Log In</span
+      >
+    </h5>
+  </div>
 </ion-content>
+<!-- E:\New folder\collegeolxapp\src\app\pages\otpverify -->

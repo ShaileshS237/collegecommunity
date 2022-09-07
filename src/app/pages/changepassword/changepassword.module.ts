@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainloginPageRoutingModule } from './mainlogin-routing.module';
+import { ChangepasswordPageRoutingModule } from './changepassword-routing.module';
 
-import { MainloginPage } from './mainlogin.page';
+import { ChangepasswordPage } from './changepassword.page';
 import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { MaterialModule } from 'src/app/material.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    MainloginPageRoutingModule,
+    ChangepasswordPageRoutingModule,
     MaterialModule,
   ],
-  declarations: [MainloginPage],
+  declarations: [ChangepasswordPage],
 })
-export class MainloginPageModule {}
+export class ChangepasswordPageModule {}
