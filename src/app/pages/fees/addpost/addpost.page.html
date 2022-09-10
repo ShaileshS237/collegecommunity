@@ -17,7 +17,22 @@
     </h4>
     <mat-form-field appearance="outline">
       <mat-label>Write something</mat-label>
-      <textarea [(ngModel)]="content" matInput></textarea>
+
+      <textarea
+        rows="10"
+        cols="40"
+        (keyup)="checkPin($event)"
+        [(ngModel)]="content"
+        matInput
+      ></textarea>
+      <ion-progress-bar
+        style="margin-top: 24px"
+        [color]="color"
+        [value]="progress"
+      ></ion-progress-bar>
+      <h1 style="font-size: 16px; margin-top: 11px; text-align: end">
+        {{length}}/750
+      </h1>
     </mat-form-field>
   </div>
 </ion-content>
@@ -30,6 +45,7 @@
         style="width: 100%; padding: 9px"
         mat-raised-button
         color="primary"
+        [disabled]="!content || color=='danger'"
       >
         Post
       </button>

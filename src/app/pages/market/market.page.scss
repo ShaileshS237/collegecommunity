@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
+
 .background {
   background-image: linear-gradient(
     to right top,
@@ -80,4 +82,8 @@
   position: absolute;
   top: 8px;
   left: 16px;
+}
+
+.market {
+  font-family: "Smooch", cursive;
 }

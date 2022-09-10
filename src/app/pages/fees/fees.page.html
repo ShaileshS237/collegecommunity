@@ -89,9 +89,19 @@
               {{item.programme}} | {{item.branch}}
             </h5>
           </ion-col>
-          <ion-col size="1" style="display: flex; align-items: center">
-            <ion-icon name="ellipsis-vertical"></ion-icon>
+          <ion-col
+            size="1"
+            style="display: flex; align-items: center"
+            *ngIf="item.uid == this.id"
+          >
+            <ion-icon
+              name="ellipsis-vertical"
+              [matMenuTriggerFor]="menu"
+            ></ion-icon>
           </ion-col>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Delete Post</button>
+          </mat-menu>
           <!-- <ion-col>
             <p style="padding: 0 15px; font-weight: 600; font-size: 19px">
               Hey Gus Welcome !
@@ -110,30 +120,56 @@
                 color: #a5a5a5;
               "
             >
-              {{item.date | date}}
+              {{item.date | date:'short'}}
             </h1>
-            <h1 style="padding: 9px 10px; font-weight: 600; font-size: 15px">
-              {{item.content}}
+            <h1
+              style="padding: 9px 10px; font-weight: 600; font-size: 15px"
+              *ngIf="item.content.length>200"
+            >
+              {{item.content | slice:0:200}}..
+              <span
+                style="text-decoration: underline"
+                [routerLink]="['/singlepost', item.id]"
+                routerLinkActive="router-link-active"
+                >View More</span
+              >
+            </h1>
+            <h1
+              style="padding: 9px 10px; font-weight: 600; font-size: 15px"
+              *ngIf="item.content.length<=200"
+            >
+              {{item.content }}
             </h1>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="8" style="display: flex; justify-content: flex-start">
-            <ion-chip color="danger">{{item.comments}} Comments</ion-chip>
+          <ion-col size="7">
+            <p
+              style="font-size: 12px; margin-left: 8px"
+              *ngIf="item.comments!=0"
+              [routerLink]="['/singlepost', item.id]"
+              routerLinkActive="router-link-active"
+            >
+              View All {{item.comments}} Comment
+            </p></ion-col
+          >
+          <ion-col size="1" style="display: flex; justify-content: flex-end">
+            <ion-icon
+              name="chatbubble-outline"
+              style="height: 100%; width: 100%"
+              [routerLink]="['/singlepost', item.id]"
+              routerLinkActive="router-link-active"
+            ></ion-icon>
+            <!-- <ion-chip color="danger">{{item.comments}} Comments</ion-chip> -->
           </ion-col>
-
           <ion-col size="4" style="display: flex; justify-content: flex-end">
-            <!-- <button mat-stroked-button color="primary" style="margin-right: 10px">
-              Comment <ion-icon name="chatbox"></ion-icon>
-            </button> -->
-
             <button
               mat-flat-button
               color="warn"
-              style="width: 88%; background: #8f0c0c"
+              style="background: #8f0c0c; width: 100%"
               (click)="like(item.id,item.likes)"
               [disabled]="disable"
-              *ngIf="!isLiked"
+              *ngIf="item.islike == null"
             >
               <ion-spinner
                 name="crescent"
@@ -148,11 +184,12 @@
             <button
               mat-stroked-button
               color="basic"
-              style="width: 88%"
-              *ngIf="isLiked"
-              (click)="like(item.id,item.likes)"
+              style="width: 100%"
+              *ngIf="item.islike!=null"
+              (click)="dislike(item.id,item.likes)"
             >
-              <span> 22 Likes </span>
+              <span *ngIf="item.likes==1"> {{item.likes}} Like </span>
+              <span *ngIf="item.likes>1"> {{item.likes}} Likes </span>
             </button>
           </ion-col>
         </ion-row>
@@ -162,17 +199,9 @@
           </ion-col>
         </ion-row> -->
       </ion-grid>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider>
       <ion-grid style="padding: 0">
         <ion-row>
-          <!-- <ion-col size="2" style="padding: 0">
-            <div style="height: 100%">
-              <img
-                style="height: 100%; object-fit: cover; border-radius: 0"
-                src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
-              />
-            </div>
-          </ion-col> -->
           <ion-col
             size="8"
             style="
@@ -180,20 +209,16 @@
               flex-direction: column;
               justify-content: center;
               padding-left: 17px;
+
+              height: 54px;
             "
           >
             <h4 style="font-size: 14px; font-weight: 100; margin-bottom: 2px">
               Add Comment..
             </h4>
           </ion-col>
-
-          <!-- <ion-col>
-            <p style="padding: 0 15px; font-weight: 600; font-size: 19px">
-              Hey Gus Welcome !
-            </p>
-          </ion-col> -->
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
     </div>
   </div>
 </ion-content>

@@ -1,0 +1,164 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #f7f7f7">
+    <ion-buttons slot="">
+      <ion-back-button defaultHref="/tabs/feeds"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #f7f7f7">
+  <div class="posts" *ngFor="let item of post">
+    <ion-grid style="padding: 0">
+      <ion-row>
+        <ion-col size="3" style="padding: 0">
+          <div style="height: 100%">
+            <img
+              style="
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px 0 12px 0;
+              "
+              src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
+            />
+          </div>
+        </ion-col>
+        <ion-col
+          size="8"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 17px;
+          "
+        >
+          <h4 style="font-weight: 700; margin-bottom: 6px">
+            {{item.name | titlecase}}
+          </h4>
+          <h5 style="font-weight: 100; font-size: 13px">
+            {{item.programme}} | {{item.branch}}
+          </h5>
+        </ion-col>
+        <ion-col
+          size="1"
+          style="display: flex; align-items: center"
+          *ngIf="item.uid == this.id"
+        >
+          <ion-icon
+            name="ellipsis-vertical"
+            [matMenuTriggerFor]="menu"
+          ></ion-icon>
+        </ion-col>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Delete Post</button>
+        </mat-menu>
+        <!-- <ion-col>
+          <p style="padding: 0 15px; font-weight: 600; font-size: 19px">
+            Hey Gus Welcome !
+          </p>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col>
+          <h1
+            style="
+              padding: 9px 10px 0;
+              font-weight: 600;
+              font-size: 11px;
+              color: #a5a5a5;
+            "
+          >
+            {{item.date | date:'short'}}
+          </h1>
+          <h1 style="padding: 9px 10px; font-weight: 600; font-size: 15px">
+            {{item.content }}..
+          </h1>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row>
+        <ion-col size="12">
+         
+        </ion-col>
+      </ion-row> -->
+    </ion-grid>
+    <!-- <mat-divider></mat-divider>
+    <ion-grid style="padding: 0">
+      <ion-row>
+        <ion-col
+          size="8"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 17px;
+
+            height: 54px;
+          "
+        >
+          <h4 style="font-size: 14px; font-weight: 100; margin-bottom: 2px">
+            Add Comment..
+          </h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+  </div>
+
+  <div class="answer">
+    <h6 style="margin: 0">All Comments</h6>
+    <div class="body">
+      <div
+        *ngFor="let item of comments"
+        style="
+          margin: 12px 0;
+          background: #e4e4e473;
+
+          padding: 11px;
+          border-radius: 5px;
+        "
+      >
+        <h6 style="margin: 0; font-weight: 300; font-size: 12px">
+          {{item.name | titlecase}} | {{item.programme}} ({{item.branch}})
+        </h6>
+        <h5 style="margin: 3px 0">{{item.comment }}</h5>
+        <h6 style="margin: 0; font-weight: 300; font-size: 12px">
+          {{item.date | date:'short' }} &nbsp;&nbsp;&nbsp;&nbsp;
+          <span *ngIf="item.uid == id">|</span>
+          <span *ngIf="item.uid == id" style="color: red">
+            &nbsp;&nbsp;&nbsp;&nbsp; Delete</span
+          >
+        </h6>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar style="--background: #f7f7f7">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="8">
+          <mat-form-field
+            style="font-size: 14px"
+            class="example-full-width"
+            appearance="fill"
+          >
+            <mat-label>React Something</mat-label>
+            <input matInput [(ngModel)]="ucomment" />
+          </mat-form-field>
+        </ion-col>
+        <ion-col size="4">
+          <button
+            mat-flat-button
+            color="primary"
+            style="height: 100%; width: 100%"
+            (click)="comment() "
+          >
+            Comment
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

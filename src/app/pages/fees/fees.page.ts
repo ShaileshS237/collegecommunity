@@ -54,14 +54,28 @@ export class FeesPage implements OnInit {
   isLiked: boolean = false;
 
   like(pid: any, like: any) {
-    this.isLiked = true;
-    this.disable = true;
+    // this.isLiked = true;
+    // this.disable = true;
     console.log(pid);
 
-    // this.apiCtrl
-    //   .post('like', { pid: pid, uid: this.id, likes: like })
-    //   .subscribe((val) => {
-    //     console.log(val);
-    //   });
+    this.apiCtrl
+      .post('like', { pid: pid, uid: this.id, likes: like })
+      .subscribe((val) => {
+        console.log(val);
+        this.getPost();
+      });
+  }
+
+  dislike(pid: any, like: any) {
+    // this.isLiked = true;
+    // this.disable = true;
+    console.log(pid);
+
+    this.apiCtrl
+      .post('dislike', { pid: pid, uid: this.id, likes: like })
+      .subscribe((val) => {
+        console.log(val);
+        this.getPost();
+      });
   }
 }

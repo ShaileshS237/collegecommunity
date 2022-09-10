@@ -11,7 +11,9 @@ import { StorageService } from 'src/app/services/storage.service';
 export class AddpostPage implements OnInit {
   username: any;
   id: any;
-  content: any;
+  content: any = '';
+  length: any = 0;
+  progress: number;
   constructor(
     public modal: ModalController,
     public strctrl: StorageService,
@@ -26,18 +28,22 @@ export class AddpostPage implements OnInit {
     });
   }
 
-  addpost() {
-    this.apictrl
-      .post('addpost', { id: this.id, content: this.content })
-      .subscribe((val: any) => {
-        console.log(val);
-        if (val.status == 200) {
-          this.modal.dismiss(val.status, 'confirm');
-        }
-      });
-  }
+  addpost() {}
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
+  }
+
+  color: any = 'success';
+
+  checkPin(event) {
+    this.progress = this.content.length / 750;
+    this.length = this.content.length;
+    console.log(this.content.length);
+    if (this.progress > 1) {
+      this.color = 'danger';
+    } else {
+      this.color = 'success';
+    }
   }
 }

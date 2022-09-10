@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #673ab7; color: white">
+    <ion-icon
+      style="font-size: 32px; text-align: end; margin-right: 10px"
+      name="close-sharp"
+      (click)="cancel()"
+      slot="end"
+    ></ion-icon>
+  </ion-toolbar>
+  <div style="background: #673ab7; height: 259px; overflow: hidden">
+    <img src="assets/send.png" alt="" />
+  </div>
+</ion-header>
+
+<ion-content style="--background: #673ab7">
+  <div
+    style="
+      color: white;
+      font-size: 22px;
+      text-align: center;
+      padding: 68px 46px;
+    "
+    *ngIf="showForm"
+  >
+    You have already send a request, Please wait till seller respond
+  </div>
+
+  <div
+    *ngIf="!showForm"
+    style="
+      background: white;
+      margin: 14px;
+      padding: 25px 21px 5px;
+      border-radius: 8px;
+    "
+  >
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Write Something</mat-label>
+      <textarea rows="5" matInput [(ngModel)]="content"></textarea>
+    </mat-form-field>
+    <h5 style="font-size: 11px; color: #ad0c0c">
+      Note: You can change the price
+    </h5>
+    <button
+      mat-stroked-button
+      style="width: 100%; margin: 19px 0px; height: 55px"
+      (click)="sendRequest()"
+    >
+      Send Request
+    </button>
+  </div>
+  <!-- <div class="footer">
+    <p>Once the request will acceptd you can get the contact no. in </p>
+  </div> -->
+</ion-content>

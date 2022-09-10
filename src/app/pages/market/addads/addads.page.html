@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar style="--background: #673ab7; color: white">
     <ion-icon
       style="font-size: 32px; text-align: end; margin-right: 10px"
       name="close-sharp"
@@ -7,10 +7,15 @@
       slot="end"
     ></ion-icon>
   </ion-toolbar>
+  <div style="background: #673ab7; height: 191px; overflow: hidden">
+    <img src="assets/sell.png" alt="" />
+  </div>
 </ion-header>
 
-<ion-content>
-  <div style="padding: 20px">
+<ion-content style="--background: #673ab7">
+  <div
+    style="padding: 28px; background: white; margin: 20px; border-radius: 6px"
+  >
     <mat-form-field
       class="example-full-width"
       appearance="outline"
@@ -54,11 +59,11 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar style="--background: #673ab7">
     <div style="padding: 18px">
       <button
         (click)="addpost()"
-        style="width: 100%; padding: 9px"
+        style="width: 100%; padding: 9px; background: white; color: #673ab7"
         mat-raised-button
         color="primary"
       >

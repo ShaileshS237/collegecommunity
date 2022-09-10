@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #673ab7; color: white">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #673ab7">
+  <div
+    style="
+      background: white;
+      margin: 12px;
+      padding: 15px;
+      border-radius: 11px;
+      height: 97%;
+    "
+  >
+    <ion-segment
+      (ionChange)="segmentChanged($event)"
+      mode="ios"
+      [(ngModel)]="segment"
+    >
+      <ion-segment-button value="sell">
+        <ion-label>Sell</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="buy">
+        <ion-label>Buy</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-content>

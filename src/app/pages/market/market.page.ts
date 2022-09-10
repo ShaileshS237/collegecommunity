@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { category } from 'src/app/staticdata/category';
 import { AddadsPage } from './addads/addads.page';
+import { MakeadealPage } from './makeadeal/makeadeal.page';
 
 @Component({
   selector: 'app-market',
@@ -48,5 +49,25 @@ export class MarketPage implements OnInit {
       console.log(val);
       this.popularads = val.result;
     });
+  }
+
+  async openModal2(id: any, name: any, price: any, uid: any) {
+    const modal = await this.modalCtrl.create({
+      component: MakeadealPage,
+      componentProps: {
+        id: id,
+        name: name,
+        price: price,
+        uid: uid,
+        cuid: this.id,
+      },
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    // if (role === 'confirm') {
+    //   this.message = `Hello, ${data}!`;
+    // }
   }
 }

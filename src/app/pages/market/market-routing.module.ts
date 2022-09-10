@@ -12,6 +12,14 @@ const routes: Routes = [
     path: 'addads',
     loadChildren: () => import('./addads/addads.module').then( m => m.AddadsPageModule)
   },
+  {
+    path: 'makeadeal',
+    loadChildren: () => import('./makeadeal/makeadeal.module').then( m => m.MakeadealPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
 ];
 
 @NgModule({
